@@ -40,7 +40,7 @@ You can either use this module "out-of-the-box", or you can fork this repo and e
 
 To use "out-of-the-box":
 
-* update your classpath by adding this dependency in your dom project's `pom.xml`:
+* update your classpath by adding this dependency in your `dom` project's `pom.xml`:
 
 <pre>
     &lt;dependency&gt;
@@ -60,10 +60,13 @@ To use "out-of-the-box":
                     ...
 
     isis.services = ...,\
-                    org.isisaddons.module.audit.XxxContributions,\
+                    org.isisaddons.module.xxx.XxxContributions,\
                     ...
-                    
-The `XxxContributions` service is optional but recommended; see below for more information.
+</pre>
+
+Notes:
+* Check for later releases by searching [Maven Central Repo](http://search.maven.org/#search|ga|1|isis-module-xxx-dom)).
+* The `XxxContributions` service is optional but recommended; see below for more information.
 
 If instead you want to extend this module's functionality, then we recommend that you fork this repo.  The repo is 
 structured as follows:
@@ -74,9 +77,8 @@ structured as follows:
 * `integtests` - integration tests for the module; depends on `fixture`
 * `webapp    ` - demo webapp (see above screenshots); depends on `dom` and `fixture`
 
-Only the `dom` project is released to     Check for versions available in the 
-[Maven Central Repo](http://search.maven.org/#search|ga|1|isis-module-audit-dom)).  The versions of the other modules 
-are purposely left at `0.0.1-SNAPSHOT` because they are not intended to be released.
+Only the `dom` project is released to Maven Central Repo.  The versions of the other modules are purposely left at 
+`0.0.1-SNAPSHOT` because they are not intended to be released.
 
 ## API ##
 
@@ -152,7 +154,10 @@ The `release.sh` script automates the release process.  It performs the followin
 
 For example:
 
-    sh release.sh 1.6.1 1.6.2-SNAPSHOT dan@haywood-associates.co.uk "this is not really my passphrase"
+    sh release.sh 1.6.0 \
+                  1.6.1-SNAPSHOT \
+                  dan@haywood-associates.co.uk \
+                  "this is not really my passphrase"
     
 where
 * `$1` is the release version
@@ -173,7 +178,7 @@ If you don't want to use `release.sh`, then the steps can be performed manually.
 
 To start, call `bumpver.sh` to bump up to the release version, eg:
 
-     `sh bumpver.sh 1.6.1`
+     `sh bumpver.sh 1.6.0`
 
 which:
 * edit the parent `pom.xml`, to change `${isis-module-command.version}` to version
@@ -211,6 +216,6 @@ releasing from the command line using `mvn nexus-staging:release`.
 
 Finally, don't forget to update the release to next snapshot, eg:
 
-    sh bumpver.sh 1.6.2-SNAPSHOT
+    sh bumpver.sh 1.6.1-SNAPSHOT
 
 and then push changes.
