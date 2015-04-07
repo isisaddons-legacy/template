@@ -23,7 +23,7 @@ import org.apache.isis.objectstore.jdo.datanucleus.IsisConfigurationForJdoIntegT
 
 /**
  * Holds an instance of an {@link IsisSystemForTest} as a {@link ThreadLocal} on the current thread,
- * initialized with ToDo app's domain services. 
+ * initialized with the app's domain services. 
  */
 public class XxxModuleSystemInitializer {
     
@@ -32,33 +32,27 @@ public class XxxModuleSystemInitializer {
     public static IsisSystemForTest initIsft() {
         IsisSystemForTest isft = IsisSystemForTest.getElseNull();
         if(isft == null) {
-            isft = new SimpleAppSystemBuilder().build().setUpSystem();
+            isft = new XxxModuleAppSystemBuilder().build().setUpSystem();
             IsisSystemForTest.set(isft);
         }
         return isft;
     }
 
-    private static class SimpleAppSystemBuilder extends IsisSystemForTest.Builder {
+    private static class XxxModuleAppSystemBuilder extends IsisSystemForTest.Builder {
 
-        public SimpleAppSystemBuilder() {
+        public XxxModuleAppSystemBuilder() {
             withLoggingAt(org.apache.log4j.Level.INFO);
             with(testConfiguration());
             with(new DataNucleusPersistenceMechanismInstaller());
 
             // services annotated with @DomainService
             withServicesIn( "org.isisaddons.module.xxx"
-                            ,"org.apache.isis.core.wrapper"
-                            ,"org.apache.isis.applib"
-                            ,"org.apache.isis.core.metamodel.services"
-                            ,"org.apache.isis.core.runtime.services"
-                            ,"org.apache.isis.objectstore.jdo.datanucleus.service.support" // IsisJdoSupportImpl
-                            ,"org.apache.isis.objectstore.jdo.datanucleus.service.eventbus" // EventBusServiceJdo
                             );
         }
 
         private static IsisConfiguration testConfiguration() {
             final IsisConfigurationForJdoIntegTests testConfiguration = new IsisConfigurationForJdoIntegTests();
-            testConfiguration.addRegisterEntitiesPackagePrefix("dom");
+            testConfiguration.addRegisterEntitiesPackagePrefix("org.isisaddons.module.xxx.dom");
             return testConfiguration;
         }
     }

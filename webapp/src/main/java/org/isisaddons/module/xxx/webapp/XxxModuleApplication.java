@@ -1,5 +1,5 @@
 /*
- *  Copyright 2014 Dan Haywood
+ *  Copyright 2014~2015 Dan Haywood
  *
  *  Licensed under the Apache License, Version 2.0 (the
  *  "License"); you may not use this file except in compliance
@@ -66,7 +66,7 @@ public class XxxModuleApplication extends IsisWicketApplication {
      * for demos only, obvious.
      */
     private final static boolean DEMO_MODE_USING_CREDENTIALS_AS_QUERYARGS = false;
-    
+
     @Override
     public Session newSession(final Request request, final Response response) {
         if(!DEMO_MODE_USING_CREDENTIALS_AS_QUERYARGS) {
@@ -105,10 +105,9 @@ public class XxxModuleApplication extends IsisWicketApplication {
     protected Module newIsisWicketModule() {
         final Module isisDefaults = super.newIsisWicketModule();
         
-        final Module simpleOverrides = new AbstractModule() {
+        final Module overrides = new AbstractModule() {
             @Override
             protected void configure() {
-
                 bind(String.class).annotatedWith(Names.named("applicationName")).toInstance(APP_NAME);
                 bind(String.class).annotatedWith(Names.named("applicationCss")).toInstance("css/application.css");
                 bind(String.class).annotatedWith(Names.named("applicationJs")).toInstance("scripts/application.js");
@@ -118,15 +117,14 @@ public class XxxModuleApplication extends IsisWicketApplication {
             }
         };
 
-        return Modules.override(isisDefaults).with(simpleOverrides);
+        return Modules.override(isisDefaults).with(overrides);
     }
 
     private static String readLines(final Class<?> contextClass, final String resourceName) {
         try {
             List<String> readLines = Resources.readLines(Resources.getResource(contextClass, resourceName), Charset.defaultCharset());
-            final String aboutText = Joiner.on("\n").join(readLines);
-            return aboutText;
-        } catch (IOException ex) {
+            return Joiner.on("\n").join(readLines);
+        } catch (IOException e) {
             return APP_NAME;
         }
     }
