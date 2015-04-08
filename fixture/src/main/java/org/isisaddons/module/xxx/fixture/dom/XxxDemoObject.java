@@ -44,7 +44,6 @@ import org.apache.isis.applib.util.ObjectContracts;
 public class XxxDemoObject implements Comparable<XxxDemoObject> {
 
     //region > name (property)
-    // //////////////////////////////////////
     
     private String name;
 
@@ -63,7 +62,6 @@ public class XxxDemoObject implements Comparable<XxxDemoObject> {
 
 
     //region > compareTo
-    // //////////////////////////////////////
 
     @Override
     public int compareTo(XxxDemoObject other) {
@@ -73,7 +71,6 @@ public class XxxDemoObject implements Comparable<XxxDemoObject> {
     //endregion
 
     //region > injected services
-    // //////////////////////////////////////
 
     @javax.inject.Inject
     @SuppressWarnings("unused")
