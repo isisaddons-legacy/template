@@ -30,7 +30,7 @@ public class XxxDemoObjectsFixture extends DiscoverableFixtureScript {
     protected void execute(final ExecutionContext executionContext) {
 
         // prereqs
-        execute(new XxxDemoObjectsTearDownFixture(), executionContext);
+	executionContext.executeChild(this, new XxxDemoObjectsTearDownFixture());
 
         // create
         create("Foo", executionContext);
