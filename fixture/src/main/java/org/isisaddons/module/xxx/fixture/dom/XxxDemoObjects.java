@@ -18,30 +18,34 @@ package org.isisaddons.module.xxx.fixture.dom;
 
 import java.util.List;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.*;
-import org.apache.isis.applib.annotation.ActionSemantics.Of;
+import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.ActionLayout;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.DomainServiceLayout;
+import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.NatureOfService;
+import org.apache.isis.applib.annotation.ParameterLayout;
+import org.apache.isis.applib.annotation.SemanticsOf;
 
-@DomainService(menuOrder = "10", repositoryFor = XxxDemoObject.class)
+@DomainService(
+        nature = NatureOfService.VIEW,
+        repositoryFor = XxxDataDemoObject.class
+)
+@DomainServiceLayout(
+        menuOrder = "10"
+)
 public class XxxDemoObjects {
 
-    //region > identification in the UI
-    // //////////////////////////////////////
-
-    public String getId() {
-        return "simple";
-    }
-
-    public String iconName() {
-        return "SimpleObject";
-    }
-
-    //endregion
 
     //region > listAll (action)
-    // //////////////////////////////////////
 
-    @Bookmarkable
-    @ActionSemantics(Of.SAFE)
+    @Action(
+            semantics = SemanticsOf.SAFE
+    )
+    @ActionLayout(
+            bookmarking = BookmarkPolicy.AS_ROOT
+    )
     @MemberOrder(sequence = "1")
     public List<XxxDemoObject> listAll() {
         return container.allInstances(XxxDemoObject.class);
@@ -50,11 +54,10 @@ public class XxxDemoObjects {
     //endregion
 
     //region > create (action)
-    // //////////////////////////////////////
     
     @MemberOrder(sequence = "2")
     public XxxDemoObject create(
-            final @Named("Name") String name) {
+            final @ParameterLayout(named = "Name") String name) {
         final XxxDemoObject obj = container.newTransientInstance(XxxDemoObject.class);
         obj.setName(name);
         container.persistIfNotAlready(obj);
@@ -64,7 +67,6 @@ public class XxxDemoObjects {
     //endregion
 
     //region > injected services
-    // //////////////////////////////////////
 
     @javax.inject.Inject 
     DomainObjectContainer container;
