@@ -1,5 +1,5 @@
 /*
- *  Copyright 2014 Dan Haywood
+ *  Copyright 2014~2015 Dan Haywood
  *
  *  Licensed under the Apache License, Version 2.0 (the
  *  "License"); you may not use this file except in compliance
@@ -22,8 +22,8 @@ import org.apache.isis.objectstore.jdo.applib.service.support.IsisJdoSupport;
 public class XxxDemoObjectsTearDownFixture extends FixtureScript {
 
     @Override
-    protected void execute(ExecutionContext executionContext) {
-        isisJdoSupport.executeUpdate("delete from \"XxxDemoObject\"");
+    protected void execute(final ExecutionContext executionContext) {
+        isisJdoSupport.executeUpdate("delete from xxx.\"XxxDemoObject\"");
     }
 
 

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2014 Dan Haywood
+ *  Copyright 2014~2015 Dan Haywood
  *
  *  Licensed under the Apache License, Version 2.0 (the
  *  "License"); you may not use this file except in compliance
@@ -27,7 +27,7 @@ public class XxxDemoObjectsFixture extends DiscoverableFixtureScript {
     }
 
     @Override
-    protected void execute(ExecutionContext executionContext) {
+    protected void execute(final ExecutionContext executionContext) {
 
         // prereqs
         execute(new XxxDemoObjectsTearDownFixture(), executionContext);
@@ -40,8 +40,8 @@ public class XxxDemoObjectsFixture extends DiscoverableFixtureScript {
 
     // //////////////////////////////////////
 
-    private XxxDemoObject create(final String name, ExecutionContext executionContext) {
-        return executionContext.add(this, xxxDemoObjects.create(name));
+    private XxxDemoObject create(final String name, final ExecutionContext executionContext) {
+        return executionContext.addResult(this, xxxDemoObjects.create(name));
     }
 
     // //////////////////////////////////////

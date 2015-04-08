@@ -16,7 +16,7 @@ s  <configuration default="false" name="XxxModuleApp (enhance only)" type="Appli
     <ConfigurationWrapper RunnerId="Run" />
     <method>
       <option name="Make" enabled="false" />
-      <option name="Maven.BeforeRunTask" enabled="true" file="C:/Apache/Isis/example/application/isis-module-xxx/dom/pom.xml" goal="datanucleus:enhance -o" />
+      <option name="Maven.BeforeRunTask" enabled="true" file="C:/github/isisaddons/isis-module-xxx/dom/pom.xml" goal="datanucleus:enhance -o" />
     </method>
   </configuration>
 </component>
