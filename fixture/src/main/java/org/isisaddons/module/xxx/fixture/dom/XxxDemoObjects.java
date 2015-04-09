@@ -30,7 +30,7 @@ import org.apache.isis.applib.annotation.SemanticsOf;
 
 @DomainService(
         nature = NatureOfService.VIEW,
-        repositoryFor = XxxDataDemoObject.class
+        repositoryFor = XxxDemoObject.class
 )
 @DomainServiceLayout(
         menuOrder = "10"

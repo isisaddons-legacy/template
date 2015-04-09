@@ -52,7 +52,7 @@ public class XxxModuleSystemInitializer {
 
         private static IsisConfiguration testConfiguration() {
             final IsisConfigurationForJdoIntegTests testConfiguration = new IsisConfigurationForJdoIntegTests();
-            testConfiguration.addRegisterEntitiesPackagePrefix("org.isisaddons.module.xxx.dom");
+            testConfiguration.addRegisterEntitiesPackagePrefix("org.isisaddons.module.xxx.dom","org.isisaddons.module.xxx.fixture");
             return testConfiguration;
         }
     }

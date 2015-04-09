@@ -18,33 +18,39 @@ package org.isisaddons.module.xxx.integtests;
 
 import java.util.List;
 import javax.inject.Inject;
+import org.assertj.core.api.Assertions;
 import org.isisaddons.module.xxx.fixture.dom.XxxDemoObject;
 import org.isisaddons.module.xxx.fixture.dom.XxxDemoObjects;
 import org.isisaddons.module.xxx.fixture.scripts.XxxDemoObjectsFixture;
+import org.apache.isis.applib.fixturescripts.FixtureScripts;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import org.apache.isis.applib.fixturescripts.FixtureScripts;
+
 
 public class XxxDemoObjectsTest extends XxxModuleIntegTest {
 
-    @Before
-    public void setUpData() throws Exception {
-        scenarioExecution().install(new XxxDemoObjectsFixture());
-    }
+    @Inject
+    FixtureScripts fixtureScripts;
 
     @Inject
     private XxxDemoObjects xxxDemoObjects;
+
+    @Before
+    public void setUpData() throws Exception {
+        fixtureScripts.runFixtureScript(new XxxDemoObjectsFixture(), null);
+    }
+
 
     @Test
     public void listAll() throws Exception {
 
         final List<XxxDemoObject> all = wrap(xxxDemoObjects).listAll();
-        assertThat(all.size(), is(3));
+        Assertions.assertThat(all.size()).isEqualTo(3);
         
         XxxDemoObject xxxDemoObject = wrap(all.get(0));
-        assertThat(xxxDemoObject.getName(), is("Foo"));
+        Assertions.assertThat(xxxDemoObject.getName()).isEqualTo("Foo");
     }
     
     @Test
@@ -53,7 +59,7 @@ public class XxxDemoObjectsTest extends XxxModuleIntegTest {
         wrap(xxxDemoObjects).create("Faz");
         
         final List<XxxDemoObject> all = wrap(xxxDemoObjects).listAll();
-        assertThat(all.size(), is(4));
+        Assertions.assertThat(all.size()).isEqualTo(4);
     }
 
 }
