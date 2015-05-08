@@ -14,10 +14,10 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.isisaddons.module.xxx.fixture.scripts;
+package org.isisaddons.module.xxx.fixture.scripts.teardown;
 
 import org.apache.isis.applib.fixturescripts.FixtureScript;
-import org.apache.isis.objectstore.jdo.applib.service.support.IsisJdoSupport;
+import org.apache.isis.applib.services.jdosupport.IsisJdoSupport;
 
 public class XxxDemoObjectsTearDownFixture extends FixtureScript {
 

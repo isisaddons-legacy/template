@@ -14,11 +14,13 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.isisaddons.module.xxx.fixture.scripts;
+package org.isisaddons.module.xxx.fixture.scripts.scenarios;
+
+import org.apache.isis.applib.fixturescripts.DiscoverableFixtureScript;
 
 import org.isisaddons.module.xxx.fixture.dom.XxxDemoObject;
 import org.isisaddons.module.xxx.fixture.dom.XxxDemoObjects;
-import org.apache.isis.applib.fixturescripts.DiscoverableFixtureScript;
+import org.isisaddons.module.xxx.fixture.scripts.teardown.XxxDemoObjectsTearDownFixture;
 
 public class XxxDemoObjectsFixture extends DiscoverableFixtureScript {
 

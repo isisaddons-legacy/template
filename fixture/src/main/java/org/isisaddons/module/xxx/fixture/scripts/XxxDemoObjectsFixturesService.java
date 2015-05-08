@@ -27,6 +27,7 @@ import org.apache.isis.applib.fixturescripts.FixtureResult;
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 import org.apache.isis.applib.fixturescripts.FixtureScripts;
 import org.apache.isis.applib.fixturescripts.SimpleFixtureScript;
+import org.isisaddons.module.xxx.fixture.scripts.scenarios.XxxDemoObjectsFixture;
 
 /**
  * Enables fixtures to be installed from the application.
@@ -42,7 +43,7 @@ import org.apache.isis.applib.fixturescripts.SimpleFixtureScript;
 public class XxxDemoObjectsFixturesService extends FixtureScripts {
 
     public XxxDemoObjectsFixturesService() {
-        super("org.isisaddons.module.xxx.fixture.scripts");
+        super(XxxDemoObjectsFixturesService.class.getPackage().getName());
     }
 
     @Override // compatibility with core 1.5.0

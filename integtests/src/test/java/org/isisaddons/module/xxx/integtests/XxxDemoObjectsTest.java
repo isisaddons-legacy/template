@@ -17,16 +17,18 @@
 package org.isisaddons.module.xxx.integtests;
 
 import java.util.List;
+
 import javax.inject.Inject;
+
 import org.assertj.core.api.Assertions;
-import org.isisaddons.module.xxx.fixture.dom.XxxDemoObject;
-import org.isisaddons.module.xxx.fixture.dom.XxxDemoObjects;
-import org.isisaddons.module.xxx.fixture.scripts.XxxDemoObjectsFixture;
-import org.apache.isis.applib.fixturescripts.FixtureScripts;
 import org.junit.Before;
 import org.junit.Test;
 
 import org.apache.isis.applib.fixturescripts.FixtureScripts;
+
+import org.isisaddons.module.xxx.fixture.dom.XxxDemoObject;
+import org.isisaddons.module.xxx.fixture.dom.XxxDemoObjects;
+import org.isisaddons.module.xxx.fixture.scripts.scenarios.XxxDemoObjectsFixture;
 
 
 public class XxxDemoObjectsTest extends XxxModuleIntegTest {
