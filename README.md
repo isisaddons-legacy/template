@@ -3,7 +3,7 @@ template
 
 Template for new `isis-module-xxx` Isis add-on.
 
-* create new repository in (http://github.com/isisaddons](Isis Addons organisation)
+* create new repository in [http://github.com/isisaddons](Isis Addons organisation)
 
 * clone
 
