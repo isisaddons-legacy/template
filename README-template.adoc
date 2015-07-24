@@ -83,6 +83,7 @@ To use "out-of-the-box":
 
 
 Notes:
+
 * Check for later releases by searching http://search.maven.org/#search|ga|1|isis-module-xxx-dom[Maven Central Repo]).
 
 ==== "Out-of-the-box" (-SNAPSHOT)
