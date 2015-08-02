@@ -47,12 +47,13 @@ public class XxxModuleSystemInitializer {
 
             // services annotated with @DomainService
             withServicesIn( "org.isisaddons.module.xxx"
-                            );
+                            //, "org.isisaddons.module.fakedata"
+            );
         }
 
         private static IsisConfiguration testConfiguration() {
             final IsisConfigurationForJdoIntegTests testConfiguration = new IsisConfigurationForJdoIntegTests();
-            testConfiguration.addRegisterEntitiesPackagePrefix("org.isisaddons.module.xxx.dom","org.isisaddons.module.xxx.fixture");
+            testConfiguration.addRegisterEntitiesPackagePrefix("org.isisaddons.module.xxx");
             return testConfiguration;
         }
     }
