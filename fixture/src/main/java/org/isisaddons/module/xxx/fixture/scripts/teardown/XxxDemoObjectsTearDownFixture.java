@@ -23,7 +23,7 @@ public class XxxDemoObjectsTearDownFixture extends FixtureScript {
 
     @Override
     protected void execute(final ExecutionContext executionContext) {
-        isisJdoSupport.executeUpdate("delete from xxx.\"XxxDemoObject\"");
+        isisJdoSupport.executeUpdate("delete from \"xxx\".\"XxxDemoObject\"");
     }
 
 
