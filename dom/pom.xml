@@ -242,7 +242,9 @@ Copyright 2014~2015 Dan Haywood
         <profile>
             <id>enhance</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <property>
+                    <name>!skip.enhance</name>
+                </property>
             </activation>
             <properties>
                 <datanucleus-maven-plugin.version>4.0.1</datanucleus-maven-plugin.version>
@@ -317,7 +319,9 @@ Copyright 2014~2015 Dan Haywood
         <profile>
             <id>cloudbees-snapshots</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <property>
+                    <name>!skip.cloudbees-snapshots</name>
+                </property>
             </activation>
             <repositories>
                 <repository>
