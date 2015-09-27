@@ -16,10 +16,12 @@
  */
 package org.isisaddons.module.xxx.integtests;
 
-import org.apache.isis.core.commons.config.IsisConfiguration;
+import org.apache.log4j.Level;
+
 import org.apache.isis.core.integtestsupport.IsisSystemForTest;
-import org.apache.isis.objectstore.jdo.datanucleus.DataNucleusPersistenceMechanismInstaller;
 import org.apache.isis.objectstore.jdo.datanucleus.IsisConfigurationForJdoIntegTests;
+
+import org.isisaddons.module.xxx.app.XxxModuleAppManifest;
 
 /**
  * Holds an instance of an {@link IsisSystemForTest} as a {@link ThreadLocal} on the current thread,
@@ -32,30 +34,15 @@ public class XxxModuleSystemInitializer {
     public static IsisSystemForTest initIsft() {
         IsisSystemForTest isft = IsisSystemForTest.getElseNull();
         if(isft == null) {
-            isft = new XxxModuleAppSystemBuilder().build().setUpSystem();
+            isft = IsisSystemForTest.builder()
+                    .withLoggingAt(Level.INFO)
+                    .with(new XxxModuleAppManifest())
+                    .with(new IsisConfigurationForJdoIntegTests())
+                    .build();
+            isft.setUpSystem();
             IsisSystemForTest.set(isft);
         }
         return isft;
-    }
-
-    private static class XxxModuleAppSystemBuilder extends IsisSystemForTest.Builder {
-
-        public XxxModuleAppSystemBuilder() {
-            withLoggingAt(org.apache.log4j.Level.INFO);
-            with(testConfiguration());
-            with(new DataNucleusPersistenceMechanismInstaller());
-
-            // services annotated with @DomainService
-            withServicesIn( "org.isisaddons.module.xxx"
-                            //, "org.isisaddons.module.fakedata"
-            );
-        }
-
-        private static IsisConfiguration testConfiguration() {
-            final IsisConfigurationForJdoIntegTests testConfiguration = new IsisConfigurationForJdoIntegTests();
-            testConfiguration.addRegisterEntitiesPackagePrefix("org.isisaddons.module.xxx");
-            return testConfiguration;
-        }
     }
 
 }

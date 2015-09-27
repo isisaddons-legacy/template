@@ -45,17 +45,15 @@ Copyright 2014~2015 Dan Haywood
     </build>
     <dependencies>
 
-        <!-- other modules in this project -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>isis-module-xxx-fixture</artifactId>
+            <artifactId>isis-module-xxx-app</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.apache.isis.core</groupId>
             <artifactId>isis-core-unittestsupport</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.apache.isis.core</groupId>
             <artifactId>isis-core-integtestsupport</artifactId>
@@ -68,11 +66,6 @@ Copyright 2014~2015 Dan Haywood
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-library</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.isis.core</groupId>
-            <artifactId>isis-core-wrapper</artifactId>
         </dependency>
 
         <dependency>

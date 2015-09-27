@@ -33,6 +33,22 @@ language governing permissions and limitations under the License.
     </properties>
     
     <build>
+        <resources>
+            <resource>
+                <filtering>false</filtering>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <filtering>false</filtering>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**</include>
+                </includes>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
@@ -146,14 +162,7 @@ language governing permissions and limitations under the License.
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>isis-module-xxx-fixture</artifactId>
-            <exclusions>
-                <exclusion>
-                    <!-- so don't pick up transitive dependency to asm 4.0.0 -->
-                    <groupId>org.datanucleus</groupId>
-                    <artifactId>datanucleus-enhancer</artifactId>
-                </exclusion>
-            </exclusions>
+            <artifactId>isis-module-xxx-app</artifactId>
         </dependency>
         
         <!-- other isis components -->
