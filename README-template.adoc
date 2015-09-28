@@ -3,9 +3,12 @@
 
 image:https://travis-ci.org/isisaddons/isis-module-xxx.png?branch=master[Build Status,link=https://travis-ci.org/isisaddons/isis-module-xxx]
 
-This module, intended for use with [Apache Isis](http://isis.apache.org), provides ...
+This module, intended for use with http://isis.apache.org[Apache Isis], provides ...
 
 The module consists of ...
+
+
+
 
 == Screenshots
 
@@ -20,6 +23,9 @@ The following screenshots show an example app's usage of the module.
 #### yada ####
 
 
+
+
+
 == How to run the Demo App
 
 The prerequisite software is:
@@ -29,7 +35,7 @@ The prerequisite software is:
 
 To build the demo app:
 
-[source]
+[source,bash]
 ----
 git clone https://github.com/isisaddons/isis-module-xxx.git
 mvn clean install
@@ -37,12 +43,14 @@ mvn clean install
 
 To run the demo app:
 
-[source]
+[source,bash]
 ----
 mvn antrun:run -P self-host
 ----
 
 Then log on using user: `sven`, password: `pass`
+
+
 
 
 == How to configure/use
@@ -63,17 +71,27 @@ To use "out-of-the-box":
             <groupId>${project.groupId}</groupId>
             <artifactId>isis-module-xxx-dom</artifactId>
             <version>${isis-module-xxx.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
         </dependency>
         ...
     </dependencies>
 </dependencyManagement>
 ----
 
+* if using `AppManifest`, then update its `getModules()` method:
+
+    @Override
+    public List<Class<?>> getModules() {
+        return Arrays.asList(
+                ...
+                org.isisaddons.module.audit.AuditModule.class,
+        );
+    }
+
+
+
 * in your project's `webapp` module, update your `WEB-INF/isis.properties`. +
 +
-[source,xml]
+[source,ini]
 ----
   isis.services.ServicesInstallerFromAnnotation.packagePrefix=\
                                 ...\
