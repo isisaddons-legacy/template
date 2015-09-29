@@ -83,13 +83,13 @@ To use "out-of-the-box":
     public List<Class<?>> getModules() {
         return Arrays.asList(
                 ...
-                org.isisaddons.module.audit.AuditModule.class,
+                org.isisaddons.module.xxx.XxxModule.class,
         );
     }
 
 
 
-* in your project's `webapp` module, update your `WEB-INF/isis.properties`. +
+* alternatively, in your project's `webapp` module, update your `WEB-INF/isis.properties`. +
 +
 [source,ini]
 ----
