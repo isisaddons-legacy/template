@@ -30,7 +30,7 @@ The following screenshots show an example app's usage of the module.
 
 The prerequisite software is:
 
-* Java JDK 7 (nb: Isis currently does not support JDK 8)
+* Java JDK 7 (JDK 8 is also supported).
 * http://maven.apache.org[maven 3] (3.2.x or later is recommended).
 
 To build the demo app:
@@ -61,20 +61,15 @@ You can either use this module "out-of-the-box", or you can fork this repo and e
 
 To use "out-of-the-box":
 
-* update your classpath by adding importing the parent module's dependency into in your parent module's `pom.xml`: +
+* update your classpath by adding this dependency in your dom project's `pom.xml`: +
 +
 [source,xml]
 ----
-<dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>isis-module-xxx-dom</artifactId>
-            <version>${isis-module-xxx.version}</version>
-        </dependency>
-        ...
-    </dependencies>
-</dependencyManagement>
+<dependency>
+    <groupId>org.incode.module.xxx</groupId>
+    <artifactId>isis-module-xxx-dom</artifactId>
+    <version>1.9.0</version>
+</dependency>
 ----
 
 * if using `AppManifest`, then update its `getModules()` method:
